@@ -15,14 +15,24 @@ Run
 ---
 You can build and run a cluster easily.
 
-> \$ docker pull sktelecom/ubuntu14.10-hdw
-> \$ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/ubuntu14.10-hdw/run-cluster.sh)"
+> $ docker pull sktelecom/ubuntu14.10-hdw
+
+> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/ubuntu14.10-hdw/run-cluster.sh)"
+
 > ...
-> \$ cd
-> \$ root@hnn-001-01:~# ./init-spark.sh 
-> \$ root@hnn-001-01:~# ./test-spark.sh 
-> \$ root@hnn-001-01:~# ./init-tajo.sh 
-> \$ root@hnn-001-01:~# /usr/local/tajo/bin/start-tajo.sh 
-> \$ root@hnn-001-01:~# ./test-tajo.sh 
+
+> $ cd
+
+> $ root@hnn-001-01:~# ./init-spark.sh 
+
+> $ root@hnn-001-01:~# ./test-spark.sh 
+
+> $ root@hnn-001-01:~# ./init-tajo.sh 
+
+> $ root@hnn-001-01:~# /usr/local/tajo/bin/start-tajo.sh 
+
+> $ root@hnn-001-01:~# ./test-tajo.sh 
+
 > ...
-> \$ root@hnn-001-01:~# exit
+
+> $ root@hnn-001-01:~# exit
