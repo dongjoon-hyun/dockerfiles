@@ -1,6 +1,6 @@
 cluster.name: hdw
 
-path.conf: /opt/elasticsearch/config
+path.conf: /usr/local/elasticsearch/config
 path.data: /data1/data
 path.logs: /data1/log
 path.plugins: /data1/plugins
