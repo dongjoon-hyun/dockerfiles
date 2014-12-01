@@ -8,10 +8,10 @@ RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
-COPY config /root/.ssh/config
+COPY config /root/.ssh/
 RUN chmod 400 /root/.ssh/config
-COPY start.sh /root/start.sh
-COPY sync-hosts.sh /root/sync-hosts.sh
+COPY start.sh /root/
+COPY sync-hosts.sh /root/
 
 # java
 RUN \
@@ -53,13 +53,13 @@ RUN \
 RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/java/default\nexport HADOOP_PREFIX=/usr/local/hadoop\nexport HADOOP_HOME=/usr/local/hadoop\n:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 RUN sed -i '/^export HADOOP_CONF_DIR/ s:.*:export HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop/:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 
-COPY core-site.xml $HADOOP_PREFIX/etc/hadoop/core-site.xml
-COPY hdfs-site.xml $HADOOP_PREFIX/etc/hadoop/hdfs-site.xml
-COPY mapred-site.xml $HADOOP_PREFIX/etc/hadoop/mapred-site.xml
-COPY yarn-site.xml $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
+COPY core-site.xml $HADOOP_PREFIX/etc/hadoop/
+COPY hdfs-site.xml $HADOOP_PREFIX/etc/hadoop/
+COPY mapred-site.xml $HADOOP_PREFIX/etc/hadoop/
+COPY yarn-site.xml $HADOOP_PREFIX/etc/hadoop/
 
 RUN chmod +x /usr/local/hadoop/etc/hadoop/*-env.sh
-COPY init-nn.sh /root/init-nn.sh
+COPY init-nn.sh /root/
 
 # spark
 RUN \
@@ -67,8 +67,8 @@ RUN \
   tar -xzf spark-1.1.1-bin-hadoop2.4.tgz && \
   ln -s spark-1.1.1-bin-hadoop2.4 spark && \
   rm spark-1.1.1-bin-hadoop2.4.tgz
-COPY init-spark.sh /root/init-spark.sh
-COPY test-spark.sh /root/test-spark.sh
+COPY init-spark.sh /root/
+COPY test-spark.sh /root/
 
 ENV SPARK_HOME /usr/local/spark
 RUN \
@@ -89,9 +89,28 @@ RUN \
   echo 'TAJO_HOME="/usr/local/tajo"' >> /etc/environment && \
   echo 'HADOOP_HOME="/usr/local/hadoop"' >> /etc/environment
 
-COPY tajo-site.xml $TAJO_HOME/conf/tajo-site.xml
-COPY init-tajo.sh /root/init-tajo.sh
-COPY data.csv /root/data.csv
-COPY test-tajo.sh /root/test-tajo.sh
+COPY tajo-site.xml $TAJO_HOME/conf/
+COPY init-tajo.sh /root/
+COPY data.csv /root/
+COPY test-tajo.sh /root/
 
-EXPOSE 22 7077 8020 8030 8031 8032 8033 8040 8042 8080 8088 9200 9300 26080 26081 50010 50020 50060 50070 50075 50090
+# python2.7
+RUN \
+  yum groupinstall -y 'development tools' && \
+  yum install -y zlib-devel bzip2-devel openssl-devel sqlite-devel && \
+  curl -LO http://python.org/ftp/python/2.7.8/Python-2.7.8.tgz && \
+  tar xzf Python-2.7.8.tgz && \
+  cd Python-2.7.8 && \
+  ./configure --prefix=/usr/local && \
+  make && make altinstall && \
+  curl https://bootstrap.pypa.io/ez_setup.py -o - | python2.7 && \
+  easy_install-2.7 pip && \
+  pip2.7 install "ipython[notebook]"
+
+# ipython notebook
+RUN \
+  ipython profile create pyspark && \
+  sed "s@# c.NotebookApp.ip = 'localhost'@c.NotebookApp.ip = '*'@g" -i /root/.ipython/profile_pyspark/ipython_notebook_config.py
+COPY 00-pyspark-setup.py /root/.ipython/profile_pyspark/startup/
+
+EXPOSE 22 7077 8020 8030 8031 8032 8033 8040 8042 8080 8088 8888 9200 9300 26080 26081 50010 50020 50060 50070 50075 50090
