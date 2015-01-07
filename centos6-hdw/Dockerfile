@@ -25,10 +25,10 @@ RUN echo 'JAVA_HOME="/usr/java/default"' >> /etc/environment
 
 # elasticsearch
 RUN \
-  cd /usr/local && curl -LO https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.zip && \
-  unzip elasticsearch-1.4.1.zip && \
-  ln -s ./elasticsearch-1.4.1 elasticsearch && \
-  rm elasticsearch-1.4.1.zip
+  cd /usr/local && curl -LO https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.2.zip && \
+  unzip elasticsearch-1.4.2.zip && \
+  ln -s ./elasticsearch-1.4.2 elasticsearch && \
+  rm elasticsearch-1.4.2.zip
 COPY elasticsearch.yml /usr/local/elasticsearch/config/
 RUN chown -R root:root /usr/local/elasticsearch
 
@@ -63,16 +63,16 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && curl -LO http://d3kbcqa49mib13.cloudfront.net/spark-1.1.1-bin-hadoop2.4.tgz && \
-  tar -xzf spark-1.1.1-bin-hadoop2.4.tgz && \
-  ln -s spark-1.1.1-bin-hadoop2.4 spark && \
-  rm spark-1.1.1-bin-hadoop2.4.tgz
+  cd /usr/local && curl -LO http://d3kbcqa49mib13.cloudfront.net/spark-1.2.0-bin-hadoop2.4.tgz && \
+  tar -xzf spark-1.2.0-bin-hadoop2.4.tgz && \
+  ln -s spark-1.2.0-bin-hadoop2.4 spark && \
+  rm spark-1.2.0-bin-hadoop2.4.tgz
 COPY init-spark.sh /root/
 COPY test-spark.sh /root/
 
 ENV SPARK_HOME /usr/local/spark
 RUN \
-  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.1.1-hadoop2.4.0.jar"' >> /etc/environment && \
+  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.2.0-hadoop2.4.0.jar"' >> /etc/environment && \
   echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
@@ -98,14 +98,15 @@ COPY test-tajo.sh /root/
 RUN \
   yum groupinstall -y 'development tools' && \
   yum install -y zlib-devel bzip2-devel openssl-devel sqlite-devel && \
-  curl -LO http://python.org/ftp/python/2.7.8/Python-2.7.8.tgz && \
-  tar xzf Python-2.7.8.tgz && \
-  cd Python-2.7.8 && \
+  curl -LO http://python.org/ftp/python/2.7.9/Python-2.7.9.tgz && \
+  tar xzf Python-2.7.9.tgz && \
+  cd Python-2.7.9 && \
   ./configure --prefix=/usr/local && \
   make && make altinstall && \
   curl https://bootstrap.pypa.io/ez_setup.py -o - | python2.7 && \
   easy_install-2.7 pip && \
-  pip2.7 install "ipython[notebook]"
+  pip2.7 install "ipython[notebook]" && \
+  cd .. && rm -rf /Python-2.7.9 /Python-2.7.9.tgz
 
 # ipython notebook
 RUN \

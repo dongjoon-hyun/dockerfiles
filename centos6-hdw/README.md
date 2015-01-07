@@ -7,8 +7,8 @@ This is a reference model for Hadoop Data Warehouse.
 
 * CentOS 6.6
 * Hadoop 2.5.2
-* Spark 1.1.1
-* Elasticsearch 1.4.1
+* Spark 1.2.0
+* Elasticsearch 1.4.2
 * Tajo 0.9.0
 
 Run
