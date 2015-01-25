@@ -101,6 +101,7 @@ COPY test-tajo.sh /root/
 RUN \
   ipython profile create pyspark && \
   sed "s@# c.NotebookApp.ip = 'localhost'@c.NotebookApp.ip = '*'@g" -i /root/.ipython/profile_pyspark/ipython_notebook_config.py
-COPY 00-pyspark-setup.py /root/.ipython/profile_pyspark/startup/
+COPY run-ipython-notebook.sh /root/
+COPY sample.ipynb /root/
  
 EXPOSE 22 7077 8020 8030 8031 8032 8033 8040 8042 8080 8088 8888 9200 9300 26080 26081 50010 50020 50060 50070 50075 50090

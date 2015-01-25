@@ -33,6 +33,8 @@ You can build and run a cluster easily.
 
 > $ root@hnn-001-01:~# ./test-tajo.sh 
 
+> $ root@hnn-001-01:~# ./run-ipython-notebook.sh
+
 > ...
 
 > $ root@hnn-001-01:~# exit
