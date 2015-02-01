@@ -115,4 +115,16 @@ RUN \
 COPY run-ipython-notebook.sh /root/
 COPY sample.ipynb /root/
 
-EXPOSE 22 7077 8020 8030 8031 8032 8033 8040 8042 8080 8088 8888 9200 9300 26080 26081 50010 50020 50060 50070 50075 50090
+# hive
+RUN \
+  cd /usr/local && curl -LO http://apache.mirror.cdnetworks.com/hive/hive-0.14.0/apache-hive-0.14.0-bin.tar.gz && \
+  tar -xzf apache-hive-0.14.0-bin.tar.gz && \
+  ln -s apache-hive-0.14.0-bin hive && \
+  rm apache-hive-0.14.0-bin.tar.gz
+ 
+ENV HIVE_HOME /usr/local/hive
+RUN \
+  echo 'HIVE_HOME="/usr/local/hive"' >> /etc/environment
+COPY test-hive.sh /root/
+
+EXPOSE 22 7077 8020 8030 8031 8032 8033 8040 8042 8080 8088 8888 9200 9300 10000 26080 26081 50010 50020 50060 50070 50075 50090
