@@ -7,5 +7,5 @@ Hadoop Data Warehouse
 * Spark 1.2.0
 * Elasticsearch 1.4.2
 * Tajo 0.9.0
-* Hive 0.14.0
+* Hive 1.0.0
 * IPython 2.3
