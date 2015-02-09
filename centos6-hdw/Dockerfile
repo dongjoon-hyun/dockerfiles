@@ -117,10 +117,10 @@ COPY sample.ipynb /root/
 
 # hive
 RUN \
-  cd /usr/local && curl -LO http://apache.mirror.cdnetworks.com/hive/hive-0.14.0/apache-hive-0.14.0-bin.tar.gz && \
-  tar -xzf apache-hive-0.14.0-bin.tar.gz && \
-  ln -s apache-hive-0.14.0-bin hive && \
-  rm apache-hive-0.14.0-bin.tar.gz
+  cd /usr/local && curl -LO http://apache.mirror.cdnetworks.com/hive/hive-1.0.0/apache-hive-1.0.0-bin.tar.gz && \
+  tar -xzf apache-hive-1.0.0-bin.tar.gz && \
+  ln -s apache-hive-1.0.0-bin hive && \
+  rm apache-hive-1.0.0-bin.tar.gz
  
 ENV HIVE_HOME /usr/local/hive
 RUN \

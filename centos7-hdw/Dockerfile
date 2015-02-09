@@ -94,22 +94,13 @@ COPY init-tajo.sh /root/
 COPY data.csv /root/
 COPY test-tajo.sh /root/
 
-# python2.7
-RUN \
-  yum groupinstall -y 'development tools' && \
-  yum install -y zlib-devel bzip2-devel openssl-devel sqlite-devel && \
-  curl -LO http://python.org/ftp/python/2.7.9/Python-2.7.9.tgz && \
-  tar xzf Python-2.7.9.tgz && \
-  cd Python-2.7.9 && \
-  ./configure --prefix=/usr/local && \
-  make && make altinstall && \
-  curl https://bootstrap.pypa.io/ez_setup.py -o - | python2.7 && \
-  easy_install-2.7 pip && \
-  pip2.7 install "ipython[notebook]" && \
-  cd .. && rm -rf /Python-2.7.9 /Python-2.7.9.tgz
-
 # ipython notebook
 RUN \
+  yum groupinstall -y 'development tools' && \
+  yum install -y zlib-devel bzip2-devel openssl-devel sqlite-devel python-devel && \
+  curl https://bootstrap.pypa.io/ez_setup.py -o - | python && \
+  easy_install pip && \
+  pip install "ipython[notebook]" && \
   ipython profile create pyspark && \
   sed "s@# c.NotebookApp.ip = 'localhost'@c.NotebookApp.ip = '*'@g" -i /root/.ipython/profile_pyspark/ipython_notebook_config.py
 COPY run-ipython-notebook.sh /root/
@@ -117,10 +108,10 @@ COPY sample.ipynb /root/
 
 # hive
 RUN \
-  cd /usr/local && curl -LO http://apache.mirror.cdnetworks.com/hive/hive-0.14.0/apache-hive-0.14.0-bin.tar.gz && \
-  tar -xzf apache-hive-0.14.0-bin.tar.gz && \
-  ln -s apache-hive-0.14.0-bin hive && \
-  rm apache-hive-0.14.0-bin.tar.gz
+  cd /usr/local && curl -LO http://apache.mirror.cdnetworks.com/hive/hive-1.0.0/apache-hive-1.0.0-bin.tar.gz && \
+  tar -xzf apache-hive-1.0.0-bin.tar.gz && \
+  ln -s apache-hive-1.0.0-bin hive && \
+  rm apache-hive-1.0.0-bin.tar.gz
  
 ENV HIVE_HOME /usr/local/hive
 RUN \
