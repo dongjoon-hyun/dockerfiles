@@ -1,7 +1,7 @@
 FROM centos:centos6
 MAINTAINER Dongjoon Hyun <dongjoon@apache.org>
 
-RUN yum update -y && yum install -y which tar unzip openssh-server openssh-clients
+RUN yum update -y && yum install -y which git tar unzip openssh-server openssh-clients
 
 RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
@@ -25,19 +25,19 @@ RUN echo 'JAVA_HOME="/usr/java/default"' >> /etc/environment
 
 # elasticsearch
 RUN \
-  cd /usr/local && curl -LO https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.2.zip && \
-  unzip elasticsearch-1.4.2.zip && \
-  ln -s ./elasticsearch-1.4.2 elasticsearch && \
-  rm elasticsearch-1.4.2.zip
+  cd /usr/local && curl -LO https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.zip && \
+  unzip elasticsearch-1.4.4.zip && \
+  ln -s ./elasticsearch-1.4.4 elasticsearch && \
+  rm elasticsearch-1.4.4.zip
 COPY elasticsearch.yml /usr/local/elasticsearch/config/
 RUN chown -R root:root /usr/local/elasticsearch
 
 # hadoop
 RUN \
-  cd /usr/local && curl -LO http://www.apache.org/dist/hadoop/common/hadoop-2.5.2/hadoop-2.5.2.tar.gz && \
-  tar -xzf hadoop-2.5.2.tar.gz && \
-  ln -s ./hadoop-2.5.2 hadoop && \
-  rm hadoop-2.5.2.tar.gz
+  cd /usr/local && curl -LO http://www.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz && \
+  tar -xzf hadoop-2.6.0.tar.gz && \
+  ln -s ./hadoop-2.6.0 hadoop && \
+  rm hadoop-2.6.0.tar.gz
 
 ENV HADOOP_PREFIX /usr/local/hadoop
 ENV YARN_CONF_DIR /usr/local/hadoop/etc/hadoop
@@ -63,25 +63,25 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && curl -LO http://d3kbcqa49mib13.cloudfront.net/spark-1.2.0-bin-hadoop2.4.tgz && \
-  tar -xzf spark-1.2.0-bin-hadoop2.4.tgz && \
-  ln -s spark-1.2.0-bin-hadoop2.4 spark && \
-  rm spark-1.2.0-bin-hadoop2.4.tgz
+  cd /usr/local && curl -LO http://d3kbcqa49mib13.cloudfront.net/spark-1.2.1-bin-hadoop2.4.tgz && \
+  tar -xzf spark-1.2.1-bin-hadoop2.4.tgz && \
+  ln -s spark-1.2.1-bin-hadoop2.4 spark && \
+  rm spark-1.2.1-bin-hadoop2.4.tgz
 COPY init-spark.sh /root/
 COPY test-spark.sh /root/
 
 ENV SPARK_HOME /usr/local/spark
 RUN \
-  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.2.0-hadoop2.4.0.jar"' >> /etc/environment && \
+  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.2.1-hadoop2.4.0.jar"' >> /etc/environment && \
   echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
 # tajo
 RUN \
-  cd /usr/local && curl -LO http://apache.mirror.cdnetworks.com/tajo/tajo-0.9.0/tajo-0.9.0.tar.gz && \
-  tar -xzf tajo-0.9.0.tar.gz && \
-  ln -s tajo-0.9.0 tajo && \
-  rm tajo-0.9.0.tar.gz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/tajo/tajo-0.10.0/tajo-0.10.0.tar.gz && \
+  tar -xzf tajo-0.10.0.tar.gz && \
+  ln -s tajo-0.10.0 tajo && \
+  rm tajo-0.10.0.tar.gz
 
 ENV TAJO_HOME /usr/local/tajo
 ENV HADOOP_HOME $HADOOP_PREFIX
@@ -117,10 +117,10 @@ COPY sample.ipynb /root/
 
 # hive
 RUN \
-  cd /usr/local && curl -LO http://apache.mirror.cdnetworks.com/hive/hive-1.0.0/apache-hive-1.0.0-bin.tar.gz && \
-  tar -xzf apache-hive-1.0.0-bin.tar.gz && \
-  ln -s apache-hive-1.0.0-bin hive && \
-  rm apache-hive-1.0.0-bin.tar.gz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/hive/hive-1.1.0/apache-hive-1.1.0-bin.tar.gz && \
+  tar -xzf apache-hive-1.1.0-bin.tar.gz && \
+  ln -s apache-hive-1.1.0-bin hive && \
+  rm apache-hive-1.1.0-bin.tar.gz
  
 ENV HIVE_HOME /usr/local/hive
 RUN \
