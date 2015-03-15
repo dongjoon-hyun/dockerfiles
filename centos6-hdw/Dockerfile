@@ -15,9 +15,9 @@ COPY sync-hosts.sh /root/
 
 # java
 RUN \
-  curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u55-b13/jdk-7u55-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie' && \
-  rpm -i jdk-7u55-linux-x64.rpm && \
-  rm jdk-7u55-linux-x64.rpm
+  curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u75-b13/jdk-7u75-linux-x64.rpm' -H 'Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie' && \
+  rpm -i jdk-7u75-linux-x64.rpm && \
+  rm jdk-7u75-linux-x64.rpm
 
 ENV JAVA_HOME /usr/java/default
 ENV PATH $PATH:$JAVA_HOME/bin
@@ -63,16 +63,16 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && curl -LO http://d3kbcqa49mib13.cloudfront.net/spark-1.2.1-bin-hadoop2.4.tgz && \
-  tar -xzf spark-1.2.1-bin-hadoop2.4.tgz && \
-  ln -s spark-1.2.1-bin-hadoop2.4 spark && \
-  rm spark-1.2.1-bin-hadoop2.4.tgz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-1.3.0/spark-1.3.0-bin-hadoop2.4.tgz && \
+  tar -xzf spark-1.3.0-bin-hadoop2.4.tgz && \
+  ln -s spark-1.3.0-bin-hadoop2.4 spark && \
+  rm spark-1.3.0-bin-hadoop2.4.tgz
 COPY init-spark.sh /root/
 COPY test-spark.sh /root/
 
 ENV SPARK_HOME /usr/local/spark
 RUN \
-  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.2.1-hadoop2.4.0.jar"' >> /etc/environment && \
+  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.3.0-hadoop2.4.0.jar"' >> /etc/environment && \
   echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
