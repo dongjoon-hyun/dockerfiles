@@ -28,10 +28,10 @@ RUN echo 'JAVA_HOME="/usr/lib/jvm/java-7-oracle"' >> /etc/environment
 
 # elasticsearch
 RUN \
-  cd /usr/local && wget -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.zip && \
-  unzip elasticsearch-1.4.4.zip && \
-  ln -s ./elasticsearch-1.4.4 elasticsearch && \
-  rm elasticsearch-1.4.4.zip
+  cd /usr/local && wget -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.5.0.zip && \
+  unzip elasticsearch-1.5.0.zip && \
+  ln -s ./elasticsearch-1.5.0 elasticsearch && \
+  rm elasticsearch-1.5.0.zip
 COPY elasticsearch.yml /usr/local/elasticsearch/config/
 RUN chown -R root:root /usr/local/elasticsearch
 
@@ -113,8 +113,10 @@ RUN \
   rm apache-hive-1.1.0-bin.tar.gz
 
 ENV HIVE_HOME /usr/local/hive
+ENV HADOOP_USER_CLASSPATH_FIRST true
 RUN \
-  echo 'HIVE_HOME="/usr/local/hive"' >> /etc/environment
+  echo 'HIVE_HOME="/usr/local/hive"' >> /etc/environment && \
+  echo 'HADOOP_USER_CLASSPATH_FIRST="true"' >> /etc/environment
 
 COPY test-hive.sh /root/
 
