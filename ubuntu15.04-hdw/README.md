@@ -5,7 +5,7 @@ Components
 ----------
 This is a reference model for Hadoop Data Warehouse.
 
-* Ubuntu 14.10
+* Ubuntu 15.04
 * Hadoop 2.6.0
 * Spark 1.3.1
 * Elasticsearch 1.5.1
