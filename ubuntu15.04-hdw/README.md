@@ -17,7 +17,7 @@ Run
 ---
 You can build and run a cluster easily.
 
-> $ sudo docker pull sktelecom/ubuntu14.10-hdw
+> $ sudo docker pull sktelecom/ubuntu15.04-hdw
 
 > $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/ubuntu14.10-hdw/run-cluster.sh)"
 
