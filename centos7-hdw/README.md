@@ -16,9 +16,9 @@ Run
 ---
 You can build and run a cluster easily.
 
-> $ sudo docker pull sktelecom/centos6-hdw
+> $ sudo docker pull sktelecom/centos7-hdw
 
-> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/centos6-hdw/run-cluster.sh)"
+> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/centos7-hdw/run-cluster.sh)"
 
 > ...
 
