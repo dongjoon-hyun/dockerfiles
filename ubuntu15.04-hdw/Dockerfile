@@ -79,25 +79,6 @@ RUN \
   echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
-# tajo
-RUN \
-  cd /usr/local && wget -q http://www.us.apache.org/dist/tajo/tajo-0.10.0/tajo-0.10.0.tar.gz && \
-  cd /usr/local && \
-  tar -xzf tajo-0.10.0.tar.gz && \
-  ln -s tajo-0.10.0 tajo && \
-  rm tajo-0.10.0.tar.gz
-
-ENV TAJO_HOME /usr/local/tajo
-ENV HADOOP_HOME $HADOOP_PREFIX
-RUN \
-  echo 'TAJO_HOME="/usr/local/tajo"' >> /etc/environment && \
-  echo 'HADOOP_HOME="/usr/local/hadoop"' >> /etc/environment
-
-COPY tajo-site.xml $TAJO_HOME/conf/
-COPY init-tajo.sh /root/
-COPY data.csv /root/
-COPY test-tajo.sh /root/
-
 # ipython notebook
 RUN \
   ipython profile create pyspark && \
@@ -117,7 +98,7 @@ ENV HADOOP_USER_CLASSPATH_FIRST true
 RUN \
   echo 'HIVE_HOME="/usr/local/hive"' >> /etc/environment && \
   echo 'HADOOP_USER_CLASSPATH_FIRST="true"' >> /etc/environment
-
+COPY data.csv /root/
 COPY test-hive.sh /root/
 
-EXPOSE 22 7077 8020 8030 8031 8032 8033 8040 8042 8080 8088 8888 9200 9300 10000 26080 26081 50010 50020 50060 50070 50075 50090
+EXPOSE 22 7077 8020 8030 8031 8032 8033 8040 8042 8080 8088 8888 9200 9300 10000 50010 50020 50060 50070 50075 50090

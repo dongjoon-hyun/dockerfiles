@@ -9,7 +9,6 @@ This is a reference model for Hadoop Data Warehouse.
 * Hadoop 2.5.2
 * Spark 1.2.0
 * Elasticsearch 1.4.2
-* Tajo 0.9.0
 * Hive 0.14
 * IPython 2.3.0
 
@@ -28,12 +27,6 @@ You can build and run a cluster easily.
 > $ root@hnn-001-01:~# ./init-spark.sh 
 
 > $ root@hnn-001-01:~# ./test-spark.sh 
-
-> $ root@hnn-001-01:~# ./init-tajo.sh 
-
-> $ root@hnn-001-01:~# /usr/local/tajo/bin/start-tajo.sh
-
-> $ root@hnn-001-01:~# ./test-tajo.sh 
 
 > $ root@hnn-001-01:~# ./test-hive.sh 
 
