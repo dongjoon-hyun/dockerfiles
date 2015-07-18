@@ -25,19 +25,19 @@ RUN echo 'JAVA_HOME="/usr/java/default"' >> /etc/environment
 
 # elasticsearch
 RUN \
-  cd /usr/local && curl -LO https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.5.2.zip && \
-  unzip elasticsearch-1.5.2.zip && \
-  ln -s ./elasticsearch-1.5.2 elasticsearch && \
-  rm elasticsearch-1.5.2.zip
+  cd /usr/local && curl -LO https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.0.zip && \
+  unzip elasticsearch-1.7.0.zip && \
+  ln -s ./elasticsearch-1.7.0 elasticsearch && \
+  rm elasticsearch-1.7.0.zip
 COPY elasticsearch.yml /usr/local/elasticsearch/config/
 RUN chown -R root:root /usr/local/elasticsearch
 
 # hadoop
 RUN \
-  cd /usr/local && curl -LO http://www.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz && \
-  tar -xzf hadoop-2.6.0.tar.gz && \
-  ln -s ./hadoop-2.6.0 hadoop && \
-  rm hadoop-2.6.0.tar.gz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz && \
+  tar -xzf hadoop-2.7.1.tar.gz && \
+  ln -s ./hadoop-2.7.1 hadoop && \
+  rm hadoop-2.7.1.tar.gz
 
 ENV HADOOP_PREFIX /usr/local/hadoop
 ENV YARN_CONF_DIR /usr/local/hadoop/etc/hadoop
@@ -63,16 +63,16 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-1.3.1/spark-1.3.1-bin-hadoop2.4.tgz && \
-  tar -xzf spark-1.3.1-bin-hadoop2.4.tgz && \
-  ln -s spark-1.3.1-bin-hadoop2.4 spark && \
-  rm spark-1.3.1-bin-hadoop2.4.tgz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-1.4.1/spark-1.4.1-bin-hadoop2.6.tgz && \
+  tar -xzf spark-1.4.1-bin-hadoop2.6.tgz && \
+  ln -s spark-1.4.1-bin-hadoop2.6 spark && \
+  rm spark-1.4.1-bin-hadoop2.6.tgz
 COPY init-spark.sh /root/
 COPY test-spark.sh /root/
 
 ENV SPARK_HOME /usr/local/spark
 RUN \
-  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.3.1-hadoop2.4.0.jar"' >> /etc/environment && \
+  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.4.1-hadoop2.6.0.jar"' >> /etc/environment && \
   echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
@@ -80,15 +80,15 @@ ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 RUN \
   yum groupinstall -y 'development tools' && \
   yum install -y zlib-devel bzip2-devel openssl-devel sqlite-devel && \
-  curl -LO http://python.org/ftp/python/2.7.9/Python-2.7.9.tgz && \
-  tar xzf Python-2.7.9.tgz && \
-  cd Python-2.7.9 && \
+  curl -LO http://python.org/ftp/python/2.7.10/Python-2.7.10.tgz && \
+  tar xzf Python-2.7.10.tgz && \
+  cd Python-2.7.10 && \
   ./configure --prefix=/usr/local && \
   make && make altinstall && \
   curl https://bootstrap.pypa.io/ez_setup.py -o - | python2.7 && \
   easy_install-2.7 pip && \
   pip2.7 install "ipython[notebook]" && \
-  cd .. && rm -rf /Python-2.7.9 /Python-2.7.9.tgz
+  cd .. && rm -rf /Python-2.7.10 /Python-2.7.10.tgz
 
 # ipython notebook
 RUN \
@@ -99,10 +99,10 @@ COPY sample.ipynb /root/
 
 # hive
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/hive/hive-1.1.0/apache-hive-1.1.0-bin.tar.gz && \
-  tar -xzf apache-hive-1.1.0-bin.tar.gz && \
-  ln -s apache-hive-1.1.0-bin hive && \
-  rm apache-hive-1.1.0-bin.tar.gz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz && \
+  tar -xzf apache-hive-1.2.1-bin.tar.gz && \
+  ln -s apache-hive-1.2.1-bin hive && \
+  rm apache-hive-1.2.1-bin.tar.gz
  
 ENV HIVE_HOME /usr/local/hive
 ENV HADOOP_USER_CLASSPATH_FIRST true
