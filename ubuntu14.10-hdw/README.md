@@ -8,7 +8,7 @@ This is a reference model for Hadoop Data Warehouse.
 * Ubuntu 14.10
 * Hadoop 2.7.1
 * Spark 1.4.1
-* Elasticsearch 1.7.0
+* Elasticsearch 1.7.1
 * Hive 1.2.1
 * Python 2.7.8
 * IPython 3.2.1
