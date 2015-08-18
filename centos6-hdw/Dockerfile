@@ -92,8 +92,9 @@ RUN \
 
 # ipython notebook
 RUN \
-  ipython profile create pyspark && \
-  sed "s@# c.NotebookApp.ip = 'localhost'@c.NotebookApp.ip = '*'@g" -i /root/.ipython/profile_pyspark/ipython_notebook_config.py
+  jupyter notebook --generate-config && \
+  sed "s@# c.NotebookApp.ip = 'localhost'@c.NotebookApp.ip = '*'@g" -i /root/.jupyter/jupyter_notebook_config.py && \
+  ipython profile create pyspark
 COPY run-ipython-notebook.sh /root/
 COPY sample.ipynb /root/
 
