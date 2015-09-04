@@ -4,7 +4,7 @@ service ssh start
 
 /root/sync-hosts.sh
 
-grep hdw /etc/hosts | awk '{print $1}' > /usr/local/hadoop/etc/hadoop/slaves
+grep hdw /etc/hosts | awk '{print $1}' | sort | uniq > /usr/local/hadoop/etc/hadoop/slaves
 for host in `grep 172 /etc/hosts | awk '{print $1}'`
 do
     echo $host
