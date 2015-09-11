@@ -26,7 +26,7 @@ You can build and run a cluster easily.
 
 > $ root@hnn-001-01:~# ./init-spark.sh 
 
-> $ root@hnn-001-01:~# ./test-spark.sh 
+> $ root@hnn-001-01:~# spark-submit --master yarn /usr/local/spark/examples/src/main/python/pi.py
 
 > $ root@hnn-001-01:~# ./test-hive.sh 
 

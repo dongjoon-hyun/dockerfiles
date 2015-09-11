@@ -68,7 +68,6 @@ RUN \
   ln -s spark-1.2.0-bin-hadoop2.4 spark && \
   rm spark-1.2.0-bin-hadoop2.4.tgz
 COPY init-spark.sh /root/
-COPY test-spark.sh /root/
 
 ENV SPARK_HOME /usr/local/spark
 RUN \

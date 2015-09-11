@@ -7,7 +7,7 @@ This is a reference model for Hadoop Data Warehouse.
 
 * CentOS 6.6
 * Hadoop 2.7.1
-* Spark 1.4.1
+* Spark 1.5.0
 * Elasticsearch 1.7.1
 * Hive 1.2.1
 * Python 2.7.10
@@ -25,7 +25,7 @@ You can build and run a cluster easily.
 
 > $ root@hnn-001-01:~# ./init-spark.sh 
 
-> $ root@hnn-001-01:~# ./test-spark.sh 
+> $ root@hnn-001-01:~# spark-submit --master yarn /usr/local/spark/examples/src/main/python/pi.py
 
 > $ root@hnn-001-01:~# ./test-hive.sh 
 
