@@ -17,9 +17,9 @@ Run
 ---
 You can build and run a cluster easily.
 
-> $ sudo docker pull dongjoon/java7-hdw
+> $ sudo docker pull sktelecom/java8-hdw
 
-> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/java7-hdw/run-cluster.sh)"
+> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/java8-hdw/run-cluster.sh)"
 
 > ...
 
