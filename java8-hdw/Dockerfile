@@ -18,10 +18,10 @@ RUN echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' >> /etc/environment
 
 # elasticsearch
 RUN \
-  cd /usr/local && wget -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.2.zip && \
-  unzip elasticsearch-1.7.2.zip && \
-  ln -s ./elasticsearch-1.7.2 elasticsearch && \
-  rm elasticsearch-1.7.2.zip
+  cd /usr/local && wget -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.3.zip && \
+  unzip elasticsearch-1.7.3.zip && \
+  ln -s ./elasticsearch-1.7.3 elasticsearch && \
+  rm elasticsearch-1.7.3.zip
 COPY elasticsearch.yml /usr/local/elasticsearch/config/
 RUN chown -R root:root /usr/local/elasticsearch
 

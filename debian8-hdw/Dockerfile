@@ -1,7 +1,7 @@
 FROM debian:8
 MAINTAINER Dongjoon Hyun <dongjoon@apache.org>
 
-RUN apt-get update && apt-get install -y git unzip openssh-server python-software-properties software-properties-common protobuf-compiler build-essential python-dev
+RUN apt-get update && apt-get install -y git unzip wget openssh-server python-software-properties software-properties-common protobuf-compiler build-essential python-dev
 
 RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
@@ -14,23 +14,19 @@ COPY sync-hosts.sh /root/
 
 # java
 RUN \
-  echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  add-apt-repository -y ppa:webupd8team/java && \
-  apt-get update && \
-  apt-get install -y oracle-java7-installer && \
-  rm -rf /var/lib/apt/lists/* && \
-  rm -rf /var/cache/oracle-jdk7-installer
+  apt-get install -y openjdk-7-jdk && \
+  rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
+ENV JAVA_HOME /usr/lib/jvm/open-jdk
 ENV PATH $PATH:$JAVA_HOME/bin
-RUN echo 'JAVA_HOME="/usr/lib/jvm/java-7-oracle"' >> /etc/environment
+RUN echo 'JAVA_HOME="/usr/lib/jvm/java-8-oracle"' >> /etc/environment
 
 # elasticsearch
 RUN \
-  cd /usr/local && wget -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.2.zip && \
-  unzip elasticsearch-1.7.2.zip && \
-  ln -s ./elasticsearch-1.7.2 elasticsearch && \
-  rm elasticsearch-1.7.2.zip
+  cd /usr/local && wget -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.3.zip && \
+  unzip elasticsearch-1.7.3.zip && \
+  ln -s ./elasticsearch-1.7.3 elasticsearch && \
+  rm elasticsearch-1.7.3.zip
 COPY elasticsearch.yml /usr/local/elasticsearch/config/
 RUN chown -R root:root /usr/local/elasticsearch
 
