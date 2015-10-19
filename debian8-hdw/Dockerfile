@@ -17,9 +17,9 @@ RUN \
   apt-get install -y openjdk-7-jdk && \
   rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_HOME /usr/lib/jvm/open-jdk
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV PATH $PATH:$JAVA_HOME/bin
-RUN echo 'JAVA_HOME="/usr/lib/jvm/java-8-oracle"' >> /etc/environment
+RUN echo 'JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"' >> /etc/environment
 
 # elasticsearch
 RUN \

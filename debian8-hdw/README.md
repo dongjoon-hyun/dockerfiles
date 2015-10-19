@@ -17,9 +17,9 @@ Run
 ---
 You can build and run a cluster easily.
 
-> $ sudo docker pull sktelecom/ubuntu15.04-hdw
+> $ sudo docker pull dongjoon/debian8-hdw
 
-> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/ubuntu15.04-hdw/run-cluster.sh)"
+> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/debian8-hdw/run-cluster.sh)"
 
 > ...
 
