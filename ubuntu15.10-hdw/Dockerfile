@@ -1,7 +1,7 @@
 FROM ubuntu:15.10
 MAINTAINER Dongjoon Hyun <dongjoon@apache.org>
 
-RUN apt-get update && apt-get install -y git unzip openssh-server python-software-properties software-properties-common protobuf-compiler build-essential python-dev
+RUN apt-get update && apt-get install -y git curl unzip openssh-server python-software-properties software-properties-common protobuf-compiler build-essential python-dev
 
 RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
@@ -27,12 +27,15 @@ RUN echo 'JAVA_HOME="/usr/lib/jvm/java-7-oracle"' >> /etc/environment
 
 # elasticsearch
 RUN \
-  cd /usr/local && wget -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.3.zip && \
-  unzip elasticsearch-1.7.3.zip && \
-  ln -s ./elasticsearch-1.7.3 elasticsearch && \
-  rm elasticsearch-1.7.3.zip
-COPY elasticsearch.yml /usr/local/elasticsearch/config/
-RUN chown -R root:root /usr/local/elasticsearch
+  wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
+  echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list && \
+  apt-get update && apt-get install elasticsearch && \
+  rm -rf /var/lib/apt/lists/*
+RUN \
+  mkdir /usr/share/elasticsearch/config/ && \
+  mkdir /data1 && \
+  chown -R elasticsearch:elasticsearch /usr/share/elasticsearch /data1
+COPY elasticsearch.yml /etc/elasticsearch/
 
 # hadoop
 RUN \
