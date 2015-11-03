@@ -1,7 +1,7 @@
 FROM java:7
 MAINTAINER Dongjoon Hyun <dongjoon@apache.org>
 
-RUN apt-get update && apt-get install -y git unzip openssh-server python-software-properties software-properties-common protobuf-compiler build-essential python-dev
+RUN apt-get update && apt-get install -y git curl unzip openssh-server python-software-properties software-properties-common protobuf-compiler build-essential python-dev
 
 RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
@@ -18,16 +18,19 @@ RUN echo 'JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64/"' >> /etc/environment
 
 # elasticsearch
 RUN \
-  cd /usr/local && wget -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.3.zip && \
-  unzip elasticsearch-1.7.3.zip && \
-  ln -s ./elasticsearch-1.7.3 elasticsearch && \
-  rm elasticsearch-1.7.3.zip
-COPY elasticsearch.yml /usr/local/elasticsearch/config/
-RUN chown -R root:root /usr/local/elasticsearch
+  wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
+  echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list && \
+  apt-get update && apt-get install elasticsearch && \
+  rm -rf /var/lib/apt/lists/*
+RUN \
+  mkdir /usr/share/elasticsearch/config/ && \
+  mkdir /data1 && \
+  chown -R elasticsearch:elasticsearch /usr/share/elasticsearch /data1
+COPY elasticsearch.yml /etc/elasticsearch/
 
 # hadoop
 RUN \
-  cd /usr/local && wget -q http://www.apache.org/dist/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz && \
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz && \
   tar -xzf hadoop-2.7.1.tar.gz && \
   ln -s ./hadoop-2.7.1 hadoop && \
   rm hadoop-2.7.1.tar.gz
@@ -56,7 +59,7 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && wget -q http://www.us.apache.org/dist/spark/spark-1.5.1/spark-1.5.1-bin-hadoop2.6.tgz && \
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-1.5.1/spark-1.5.1-bin-hadoop2.6.tgz && \
   tar -xzf spark-1.5.1-bin-hadoop2.6.tgz && \
   ln -s spark-1.5.1-bin-hadoop2.6 spark && \
   rm spark-1.5.1-bin-hadoop2.6.tgz
@@ -70,7 +73,7 @@ ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
 # ipython
 RUN \
-  wget -qO- https://bootstrap.pypa.io/ez_setup.py | python2.7 && \
+  curl https://bootstrap.pypa.io/ez_setup.py | python2.7 && \
   easy_install-2.7 pip && \
   pip2.7 install "ipython[notebook]"
 
@@ -84,7 +87,7 @@ COPY sample.ipynb /root/
 
 # hive
 RUN \
-  cd /usr/local && wget -q http://www.us.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz && \
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz && \
   tar -xzf apache-hive-1.2.1-bin.tar.gz && \
   ln -s apache-hive-1.2.1-bin hive && \
   rm apache-hive-1.2.1-bin.tar.gz
