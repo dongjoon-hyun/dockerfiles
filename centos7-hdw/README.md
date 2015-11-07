@@ -6,27 +6,26 @@ Components
 This is a reference model for Hadoop Data Warehouse.
 
 * CentOS 7
-* Hadoop 2.5.2
-* Spark 1.2.0
-* Elasticsearch 1.4.2
-* Hive 0.14
-* IPython 2.3.0
+* Hadoop 2.7.1
+* Spark 1.5.1
+* Elasticsearch 2.0.0
+* Hive 1.2.1
+* Python 2.7.9
+* IPython 4.0.0
 
 Run
 ---
 You can build and run a cluster easily.
 
-> $ sudo docker pull sktelecom/centos7-hdw
+> $ sudo docker pull dongjoon/centos7-hdw
 
-> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/centos7-hdw/run-cluster.sh)"
+> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/ubuntu15.10-hdw/run-cluster.sh)"
 
 > ...
 
-> $ cd
-
 > $ root@hnn-001-01:~# ./init-spark.sh 
 
-> $ root@hnn-001-01:~# spark-submit --master yarn /usr/local/spark/examples/src/main/python/pi.py
+> $ root@hnn-001-01:~# spark-submit --master yarn-client /usr/local/spark/examples/src/main/python/pi.py
 
 > $ root@hnn-001-01:~# ./test-hive.sh 
 

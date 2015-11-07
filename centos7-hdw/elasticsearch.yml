@@ -1,9 +1,13 @@
 cluster.name: hdw
 
-path.conf: /usr/local/elasticsearch/config
+node.master : true
+path.conf: /usr/share/elasticsearch/config
 path.data: /data1/data
 path.logs: /data1/log
 path.plugins: /data1/plugins
 path.work: /data1/work
+network.host: _non_loopback_
 
 discovery.zen.ping.timeout: 10s
+discovery.zen.ping.multicast.enabled: false
+discovery.zen.ping.unicast.hosts: ["hdw-001-01", "hdw-001-02", "hdw-001-03"]

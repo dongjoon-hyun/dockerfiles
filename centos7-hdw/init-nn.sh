@@ -1,6 +1,6 @@
 #!/bin/bash
 
-service sshd start
+/usr/sbin/sshd
 
 /root/sync-hosts.sh
 
