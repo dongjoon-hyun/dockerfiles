@@ -7,7 +7,7 @@ This is a reference model for Hadoop Data Warehouse.
 
 * CentOS 7
 * Hadoop 2.7.1
-* Spark 1.5.1
+* Spark 1.5.2
 * Elasticsearch 2.0.0
 * Hive 1.2.1
 * Python 2.7.9
@@ -19,7 +19,7 @@ You can build and run a cluster easily.
 
 > $ sudo docker pull dongjoon/centos7-hdw
 
-> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/ubuntu15.10-hdw/run-cluster.sh)"
+> $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/dongjoon-hyun/dockerfiles/master/centos7-hdw/run-cluster.sh)"
 
 > ...
 

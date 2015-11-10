@@ -64,15 +64,15 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-1.5.1/spark-1.5.1-bin-hadoop2.6.tgz && \
-  tar -xzf spark-1.5.1-bin-hadoop2.6.tgz && \
-  ln -s spark-1.5.1-bin-hadoop2.6 spark && \
-  rm spark-1.5.1-bin-hadoop2.6.tgz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-1.5.2/spark-1.5.2-bin-hadoop2.6.tgz && \
+  tar -xzf spark-1.5.2-bin-hadoop2.6.tgz && \
+  ln -s spark-1.5.2-bin-hadoop2.6 spark && \
+  rm spark-1.5.2-bin-hadoop2.6.tgz
 COPY init-spark.sh /root/
 
 ENV SPARK_HOME /usr/local/spark
 RUN \
-  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.5.1-hadoop2.6.0.jar"' >> /etc/environment && \
+  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.5.2-hadoop2.6.0.jar"' >> /etc/environment && \
   echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
