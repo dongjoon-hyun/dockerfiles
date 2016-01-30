@@ -6,7 +6,7 @@ Components
 This is a reference model for Hadoop Data Warehouse.
 
 * Debian 8.2
-* Hadoop 2.7.1
+* Hadoop 2.7.2
 * Spark 1.6.0
 * Elasticsearch 2.1.1
 * Hive 1.2.1

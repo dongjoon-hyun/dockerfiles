@@ -39,10 +39,10 @@ COPY elasticsearch.yml /etc/elasticsearch/
 
 # hadoop
 RUN \
-  cd /usr/local && wget -q http://www.us.apache.org/dist/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz && \
-  tar -xzf hadoop-2.7.1.tar.gz && \
-  ln -s ./hadoop-2.7.1 hadoop && \
-  rm hadoop-2.7.1.tar.gz
+  cd /usr/local && wget -q http://www.us.apache.org/dist/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz && \
+  tar -xzf hadoop-2.7.2.tar.gz && \
+  ln -s ./hadoop-2.7.2 hadoop && \
+  rm hadoop-2.7.2.tar.gz
 
 ENV HADOOP_PREFIX /usr/local/hadoop
 ENV YARN_CONF_DIR /usr/local/hadoop/etc/hadoop
