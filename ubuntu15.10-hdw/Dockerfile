@@ -36,6 +36,7 @@ RUN \
   mkdir /data1 && \
   chown -R elasticsearch:elasticsearch /usr/share/elasticsearch /data1
 COPY elasticsearch.yml /etc/elasticsearch/
+COPY run-es.sh /root/
 
 # hadoop
 RUN \
