@@ -30,6 +30,7 @@ RUN \
   rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch && \
   yum install -y elasticsearch
 COPY elasticsearch.yml /etc/elasticsearch/
+COPY run-es.sh /root/
 
 # hadoop
 RUN \
