@@ -5,13 +5,13 @@ Components
 ----------
 This is a reference model for Hadoop Data Warehouse.
 
-* CentOS 7
+* CentOS 7.2
 * Hadoop 2.7.2
 * Spark 1.6.0
-* Elasticsearch 2.1.1
+* Elasticsearch 2.2.0
 * Hive 1.2.1
-* Python 2.7.10
-* IPython 4.0.1
+* Python 2.7.5
+* IPython 4.1.1
 
 Run
 ---

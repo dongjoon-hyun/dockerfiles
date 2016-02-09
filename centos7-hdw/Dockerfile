@@ -31,6 +31,8 @@ RUN \
   yum install -y elasticsearch
 COPY elasticsearch.yml /etc/elasticsearch/
 COPY run-es.sh /root/
+# systemd
+ENV container=docker
 
 # hadoop
 RUN \
