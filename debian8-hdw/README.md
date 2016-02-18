@@ -7,13 +7,13 @@ Components
 ----------
 This is a reference model for Hadoop Data Warehouse.
 
-* Debian 8.2
+* Debian 8.3
 * Hadoop 2.7.2
 * Spark 1.6.0
 * Elasticsearch 2.2.0
 * Hive 2.0.0
-* Python 2.7.11
-* IPython 4.0.1
+* Python 2.7.9
+* IPython 4.1.1
 
 Run
 ---
