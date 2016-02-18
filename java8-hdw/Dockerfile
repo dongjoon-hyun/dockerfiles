@@ -88,10 +88,10 @@ COPY sample.ipynb /root/
 
 # hive
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz && \
-  tar -xzf apache-hive-1.2.1-bin.tar.gz && \
-  ln -s apache-hive-1.2.1-bin hive && \
-  rm apache-hive-1.2.1-bin.tar.gz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/hive/hive-2.0.0/apache-hive-2.0.0-bin.tar.gz && \
+  tar -xzf apache-hive-2.0.0-bin.tar.gz && \
+  ln -s apache-hive-2.0.0-bin hive && \
+  rm apache-hive-2.0.0-bin.tar.gz
 
 ENV HIVE_HOME /usr/local/hive
 ENV HADOOP_USER_CLASSPATH_FIRST true
