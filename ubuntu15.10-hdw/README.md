@@ -1,3 +1,5 @@
+[![](https://badge.imagelayers.io/dongjoon/ubuntu15.10-hdw:latest.svg)](https://imagelayers.io/?images=dongjoon/ubuntu15.10-hdw:latest 'Get your own badge on imagelayers.io')
+
 Hadoop Data Warehouse
 ====================
 
