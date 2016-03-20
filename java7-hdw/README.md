@@ -11,7 +11,7 @@ This is a reference model for Hadoop Data Warehouse.
 * Debian 8.3
 * Hadoop 2.7.2
 * Spark 1.6.1
-* Elasticsearch 2.2.0
+* Elasticsearch 2.2.1
 * Hive 2.0.0
 * Python 2.7.9
 * IPython 4.1.1
