@@ -76,7 +76,7 @@ ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 RUN \
   curl https://bootstrap.pypa.io/ez_setup.py | python2.7 && \
   easy_install-2.7 pip && \
-  pip2.7 install "ipython[notebook]"
+  pip2.7 install --no-cache-dir "ipython[notebook]"
 
 # ipython notebook
 RUN \

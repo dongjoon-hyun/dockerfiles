@@ -83,7 +83,7 @@ RUN \
   yum install -y zlib-devel bzip2-devel openssl-devel sqlite-devel python-devel && \
   curl https://bootstrap.pypa.io/ez_setup.py -o - | python && \
   easy_install pip && \
-  pip install "ipython[notebook]" && \
+  pip install --no-cache-dir "ipython[notebook]" && \
   ipython profile create pyspark
 RUN sed "s@# c.NotebookApp.ip = 'localhost'@c.NotebookApp.ip = '*'@g" -i /root/.ipython/profile_pyspark/ipython_kernel_config.py
 COPY run-ipython-notebook.sh /root/
