@@ -85,7 +85,8 @@ ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 RUN \
   wget -qO- https://bootstrap.pypa.io/ez_setup.py | python2.7 && \
   easy_install-2.7 pip && \
-  pip2.7 install --no-cache-dir "ipython[notebook]"
+  pip2.7 install --no-cache-dir "ipython[notebook]" toree && \
+  jupyter toree install --spark_home=$SPARK_HOME
 
 # ipython notebook
 RUN \
