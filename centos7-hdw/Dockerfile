@@ -88,7 +88,8 @@ RUN \
   ipython profile create pyspark
 RUN sed "s@# c.NotebookApp.ip = 'localhost'@c.NotebookApp.ip = '*'@g" -i /root/.ipython/profile_pyspark/ipython_kernel_config.py
 COPY run-ipython-notebook.sh /root/
-COPY sample.ipynb /root/
+COPY sample_python.ipynb /root/
+COPY sample_scala.ipynb /root/
 
 # hive
 RUN \
