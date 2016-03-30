@@ -11,7 +11,7 @@ This is a reference model for Hadoop Data Warehouse.
 * Ubuntu 16.04 (dev)
 * Hadoop 2.7.2
 * Spark 1.6.1
-* Elasticsearch 2.2.1
+* Elasticsearch 2.3.0
 * Hive 2.0.0
 * Python 2.7.11
 * IPython 4.1.2
