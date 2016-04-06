@@ -73,7 +73,6 @@ RUN \
   tar -xzf spark-1.6.1-bin-hadoop2.6.tgz && \
   ln -s spark-1.6.1-bin-hadoop2.6 spark && \
   rm spark-1.6.1-bin-hadoop2.6.tgz
-COPY init-spark.sh /root/
 
 ENV SPARK_HOME /usr/local/spark
 RUN \
