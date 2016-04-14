@@ -108,6 +108,7 @@ ENV HADOOP_USER_CLASSPATH_FIRST true
 RUN \
   echo 'HIVE_HOME="/usr/local/hive"' >> /etc/environment && \
   echo 'HADOOP_USER_CLASSPATH_FIRST="true"' >> /etc/environment
+ENV PATH $PATH:$HIVE_HOME/bin
 COPY data.csv /root/
 COPY test-hive.sh /root/
 
