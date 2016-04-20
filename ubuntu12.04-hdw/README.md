@@ -8,7 +8,7 @@ Components
 ----------
 This is a reference model for Hadoop Data Warehouse.
 
-* Ubuntu 12.04
+* Ubuntu 12.04 LTS
 * Hadoop 2.7.2
 * Spark 1.6.1
 * Elasticsearch 2.3.1
