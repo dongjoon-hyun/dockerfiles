@@ -10,7 +10,7 @@ This is a reference model for Hadoop Data Warehouse.
 * OS: Ubuntu, Debian, CentOS
 * Hadoop 2.7.2
 * Spark 1.6.1
-* Elasticsearch 2.3.1
+* Elasticsearch 2.3.2
 * Hive 2.0.0
 * Python 2.7
 * IPython 4.1.2
