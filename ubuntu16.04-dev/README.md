@@ -12,7 +12,7 @@ This is a reference model for Hadoop Data Warehouse.
 * JDK 1.8.0_91
 * Hadoop 2.7.2
 * Spark 2.0.0 Preview
-* Elasticsearch 2.3.2
+* Elasticsearch 2.3.3
 * Hive 2.0.0
 * Python 2.7.11
 * IPython 4.2.0
