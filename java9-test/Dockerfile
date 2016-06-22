@@ -1,7 +1,7 @@
 FROM java:9
 MAINTAINER Dongjoon Hyun <dongjoon@apache.org>
 
-RUN apt-get update && apt-get install -y git curl unzip openssh-server python-software-properties software-properties-common protobuf-compiler build-essential python-dev
+RUN apt-get update && apt-get install -y git curl unzip openssh-server software-properties-common protobuf-compiler build-essential python-dev
 
 RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
