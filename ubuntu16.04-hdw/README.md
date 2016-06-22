@@ -12,7 +12,7 @@ This is a reference model for Hadoop Data Warehouse.
 * Hadoop 2.7.2
 * Spark 1.6.1
 * Elasticsearch 2.3.3
-* Hive 2.0.1
+* Hive 2.1.0
 * Python 2.7.11
 * IPython 4.2.0
 * Toree 0.1.0
