@@ -69,7 +69,7 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && wget -q http://home.apache.org/~pwendell/spark-releases/spark-2.0.0-preview-bin/spark-2.0.0-preview-bin-hadoop2.7.tgz && \
+  cd /usr/local && wget -q http://www-us.apache.org/dist/spark/spark-2.0.0-preview/spark-2.0.0-preview-bin-hadoop2.7.tgz && \
   tar -xzf spark-2.0.0-preview-bin-hadoop2.7.tgz && \
   ln -s spark-2.0.0-preview-bin-hadoop2.7 spark && \
   rm spark-2.0.0-preview-bin-hadoop2.7.tgz
