@@ -1,5 +1,4 @@
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](LICENSE)
-[![](https://badge.imagelayers.io/dongjoon/java9-hdw:latest.svg)](https://imagelayers.io/?images=dongjoon/java9-hdw:latest)
 
 Hadoop Data Warehouse
 ====================

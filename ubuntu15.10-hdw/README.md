@@ -1,5 +1,4 @@
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](LICENSE)
-[![](https://badge.imagelayers.io/dongjoon/ubuntu15.10-hdw:latest.svg)](https://imagelayers.io/?images=dongjoon/ubuntu15.10-hdw:latest)
 
 Hadoop Data Warehouse
 ====================
@@ -29,7 +28,7 @@ You can build and run a cluster easily.
 
 > $ root@hnn-001-01:~# spark-submit --master yarn-client /usr/local/spark/examples/src/main/python/pi.py
 
-> $ root@hnn-001-01:~# ./test-hive.sh 
+> $ root@hnn-001-01:~# ./test-hive.sh
 
 > $ root@hnn-001-01:~# ./run-ipython-notebook.sh
 
