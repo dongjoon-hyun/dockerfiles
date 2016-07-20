@@ -10,12 +10,11 @@ This is a reference model for Hadoop Data Warehouse.
 * Ubuntu 16.04 LTS
 * JDK 1.8.0_91
 * Hadoop 2.7.2
-* Spark 2.0.0 Preview
-* Elasticsearch 2.3.3
+* Spark 2.0.0 RC5
+* Elasticsearch 2.3.4
 * Hive 2.1.0
-* Python 2.7.11
-* IPython 4.2.0
-* Toree 0.1.0 (Not Working)
+* Python 2.7.12
+* IPython 5.0.0
 
 Run
 ---
