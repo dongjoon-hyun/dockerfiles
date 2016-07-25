@@ -1,6 +1,5 @@
 docker build -t dongjoon/centos7-hdw centos7-hdw
 docker build -t dongjoon/ubuntu12.04-hdw ubuntu12.04-hdw
-docker build -t dongjoon/ubuntu15.10-hdw ubuntu15.10-hdw
 docker build -t dongjoon/ubuntu16.04-hdw ubuntu16.04-hdw
 docker build -t dongjoon/ubuntu16.04-dev ubuntu16.04-dev
 docker build -t dongjoon/debian8-hdw debian8-hdw
