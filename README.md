@@ -10,8 +10,8 @@ This is a reference model for Hadoop Data Warehouse.
 * OS: Ubuntu, Debian, CentOS
 * Hadoop 2.7.2
 * Spark 1.6.2
-* Elasticsearch 2.3.3
+* Elasticsearch 2.3.4
 * Hive 2.1.0
 * Python 2.7
-* IPython 4.2.0
+* IPython 5.0.0
 * Toree 0.1.0
