@@ -9,7 +9,7 @@ This is a reference model for Hadoop Data Warehouse.
 
 * Debian 8.5
 * Hadoop 2.7.2
-* Spark 1.6.2
+* Spark 2.0.0
 * Elasticsearch 2.3.4
 * Hive 2.1.0
 * Python 2.7.9

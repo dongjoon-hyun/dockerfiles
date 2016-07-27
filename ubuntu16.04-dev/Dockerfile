@@ -69,14 +69,13 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && wget -q http://people.apache.org/~pwendell/spark-releases/spark-2.0.0-rc5-bin/spark-2.0.0-bin-hadoop2.7.tgz && \
+  cd /usr/local && wget -q http://www.us.apache.org/dist/spark/spark-2.0.0/spark-2.0.0-bin-hadoop2.7.tgz && \
   tar -xzf spark-2.0.0-bin-hadoop2.7.tgz && \
   ln -s spark-2.0.0-bin-hadoop2.7 spark && \
   rm spark-2.0.0-bin-hadoop2.7.tgz
 
 ENV SPARK_HOME /usr/local/spark
-RUN \
-  echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
+RUN echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
 # ipython

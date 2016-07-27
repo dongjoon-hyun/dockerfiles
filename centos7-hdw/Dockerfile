@@ -65,15 +65,13 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-1.6.2/spark-1.6.2-bin-hadoop2.6.tgz && \
-  tar -xzf spark-1.6.2-bin-hadoop2.6.tgz && \
-  ln -s spark-1.6.2-bin-hadoop2.6 spark && \
-  rm spark-1.6.2-bin-hadoop2.6.tgz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-2.0.0/spark-2.0.0-bin-hadoop2.7.tgz && \
+  tar -xzf spark-2.0.0-bin-hadoop2.7.tgz && \
+  ln -s spark-2.0.0-bin-hadoop2.7 spark && \
+  rm spark-2.0.0-bin-hadoop2.7.tgz
 
 ENV SPARK_HOME /usr/local/spark
-RUN \
-  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.6.2-hadoop2.6.0.jar"' >> /etc/environment && \
-  echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
+RUN echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
 # ipython notebook
