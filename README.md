@@ -14,4 +14,3 @@ This is a reference model for Hadoop Data Warehouse.
 * Hive 2.1.0
 * Python 2.7
 * IPython 5.0.0
-* Toree 0.1.0
