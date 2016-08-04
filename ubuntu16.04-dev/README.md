@@ -11,7 +11,7 @@ This is a reference model for Hadoop Data Warehouse.
 * JDK 1.8.0_91
 * Hadoop 2.7.2
 * Spark 2.0.0
-* Elasticsearch 2.3.4
+* Elasticsearch 2.3.5
 * Hive 2.1.0
 * Python 2.7.12
 * IPython 5.0.0
