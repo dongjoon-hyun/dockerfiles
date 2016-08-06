@@ -1,3 +1,4 @@
+[![](https://images.microbadger.com/badges/image/dongjoon/ubuntu16.04-dev.svg)](https://microbadger.com/images/dongjoon/ubuntu16.04-dev)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](LICENSE)
 
 Hadoop Data Warehouse
