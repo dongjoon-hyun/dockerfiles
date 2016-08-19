@@ -9,7 +9,7 @@ Components
 This is a reference model for Hadoop Data Warehouse.
 
 * Ubuntu 16.04 LTS
-* JDK 1.8.0_91
+* JDK 1.8.0_101
 * Hadoop 2.7.2
 * Spark 2.0.0
 * Elasticsearch 2.3.5
