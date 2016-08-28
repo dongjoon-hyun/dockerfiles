@@ -63,16 +63,13 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-1.5.1/spark-1.5.1-bin-hadoop2.6.tgz && \
-  tar -xzf spark-1.5.1-bin-hadoop2.6.tgz && \
-  ln -s spark-1.5.1-bin-hadoop2.6 spark && \
-  rm spark-1.5.1-bin-hadoop2.6.tgz
-COPY init-spark.sh /root/
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-2.0.0/spark-2.0.0-bin-hadoop2.7.tgz && \
+  tar -xzf spark-2.0.0-bin-hadoop2.7.tgz && \
+  ln -s spark-2.0.0-bin-hadoop2.7 spark && \
+  rm spark-2.0.0-bin-hadoop2.7.tgz
 
 ENV SPARK_HOME /usr/local/spark
-RUN \
-  echo 'SPARK_JAR="hdfs:///spark/spark-assembly-1.5.1-hadoop2.6.0.jar"' >> /etc/environment && \
-  echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
+RUN echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
 ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 
 # python2.7
@@ -99,16 +96,17 @@ COPY sample.ipynb /root/
 
 # hive
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz && \
-  tar -xzf apache-hive-1.2.1-bin.tar.gz && \
-  ln -s apache-hive-1.2.1-bin hive && \
-  rm apache-hive-1.2.1-bin.tar.gz
- 
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/hive/hive-2.1.0/apache-hive-2.1.0-bin.tar.gz && \
+  tar -xzf apache-hive-2.1.0-bin.tar.gz && \
+  ln -s apache-hive-2.1.0-bin hive && \
+  rm apache-hive-2.1.0-bin.tar.gz
+
 ENV HIVE_HOME /usr/local/hive
 ENV HADOOP_USER_CLASSPATH_FIRST true
 RUN \
   echo 'HIVE_HOME="/usr/local/hive"' >> /etc/environment && \
   echo 'HADOOP_USER_CLASSPATH_FIRST="true"' >> /etc/environment
+ENV PATH $PATH:$HIVE_HOME/bin
 COPY data.csv /root/
 COPY test-hive.sh /root/
 
