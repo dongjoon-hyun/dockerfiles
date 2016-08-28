@@ -79,15 +79,15 @@ ENV PATH $PATH:$SPARK_HOME/bin:$HADOOP_PREFIX/bin
 RUN \
   yum groupinstall -y 'development tools' && \
   yum install -y zlib-devel bzip2-devel openssl-devel sqlite-devel && \
-  curl -LO http://python.org/ftp/python/2.7.10/Python-2.7.10.tgz && \
-  tar xzf Python-2.7.10.tgz && \
-  cd Python-2.7.10 && \
+  curl -LO http://python.org/ftp/python/2.7.12/Python-2.7.12.tgz && \
+  tar xzf Python-2.7.12.tgz && \
+  cd Python-2.7.12 && \
   ./configure --prefix=/usr/local && \
   make && make altinstall && \
   curl https://bootstrap.pypa.io/ez_setup.py -o - | python2.7 && \
   easy_install-2.7 pip && \
   pip2.7 install "ipython[notebook]" && \
-  cd .. && rm -rf /Python-2.7.10 /Python-2.7.10.tgz
+  cd .. && rm -rf /Python-2.7.12 /Python-2.7.12.tgz
 
 # ipython notebook
 RUN \
