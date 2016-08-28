@@ -34,10 +34,10 @@ RUN chown -R root:root /usr/local/elasticsearch
 
 # hadoop
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz && \
-  tar -xzf hadoop-2.7.1.tar.gz && \
-  ln -s ./hadoop-2.7.1 hadoop && \
-  rm hadoop-2.7.1.tar.gz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz && \
+  tar -xzf hadoop-2.7.3.tar.gz && \
+  ln -s ./hadoop-2.7.3 hadoop && \
+  rm hadoop-2.7.3.tar.gz
 
 ENV HADOOP_PREFIX /usr/local/hadoop
 ENV YARN_CONF_DIR /usr/local/hadoop/etc/hadoop
