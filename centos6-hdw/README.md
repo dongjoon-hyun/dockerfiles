@@ -8,7 +8,7 @@ Components
 This is a reference model for Hadoop Data Warehouse.
 
 * CentOS 6.8 (Final)
-* Hadoop 2.7.1
+* Hadoop 2.7.3
 * Spark 1.5.1
 * Elasticsearch 1.7.3
 * Hive 1.2.1
