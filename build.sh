@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ORG=dongjoon
 for DIR in `ls -d */`
 do
