@@ -9,7 +9,7 @@ This is a reference model for Hadoop Data Warehouse.
 
 * CentOS 6.8 (Final)
 * Hadoop 2.7.3
-* Spark 2.0.0
+* Spark 2.0.1
 * Elasticsearch 1.7.3
 * Hive 2.1.0
 * Python 2.7.12
