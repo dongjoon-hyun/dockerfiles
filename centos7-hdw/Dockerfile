@@ -65,10 +65,10 @@ COPY init-nn.sh /root/
 
 # spark
 RUN \
-  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-2.0.0/spark-2.0.0-bin-hadoop2.7.tgz && \
-  tar -xzf spark-2.0.0-bin-hadoop2.7.tgz && \
-  ln -s spark-2.0.0-bin-hadoop2.7 spark && \
-  rm spark-2.0.0-bin-hadoop2.7.tgz
+  cd /usr/local && curl -LO http://www.us.apache.org/dist/spark/spark-2.0.1/spark-2.0.1-bin-hadoop2.7.tgz && \
+  tar -xzf spark-2.0.1-bin-hadoop2.7.tgz && \
+  ln -s spark-2.0.1-bin-hadoop2.7 spark && \
+  rm spark-2.0.1-bin-hadoop2.7.tgz
 
 ENV SPARK_HOME /usr/local/spark
 RUN echo 'SPARK_HOME="/usr/local/spark"' >> /etc/environment
