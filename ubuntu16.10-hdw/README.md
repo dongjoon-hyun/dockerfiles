@@ -14,7 +14,7 @@ This is a reference model for Hadoop Data Warehouse.
 * Elasticsearch 2.4.1
 * Hive 2.1.0
 * Python 2.7.12
-* IPython 5.0.0
+* IPython 5.1.0
 
 Run
 ---
