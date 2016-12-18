@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ORG=dongjoon
 for DIR in `ls -d */`
