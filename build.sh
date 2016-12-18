@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 ORG=dongjoon
-for DIR in `ls -d */`
+TARGET=${1:-`ls -d */`}
+for DIR in $TARGET
 do
     docker build -t $ORG/${DIR%%/} ${DIR%%/}
 done
