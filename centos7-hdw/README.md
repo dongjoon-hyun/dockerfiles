@@ -11,7 +11,7 @@ This is a reference model for Hadoop Data Warehouse.
 * CentOS 7.3
 * Hadoop 2.7.3
 * Spark 2.1.0
-* Elasticsearch 2.4.2
+* Elasticsearch 2.4.3
 * Hive 2.1.1
 * Python 2.7.5
 * IPython 5.1.0
