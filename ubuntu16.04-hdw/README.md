@@ -28,6 +28,8 @@ You can build and run a cluster easily.
 
 > $ root@hnn-001-01:~# ./test-hive.sh
 
+> $ root@hnn-001-01:~# run-example SparkPi
+
 > $ root@hnn-001-01:~# spark-shell
 
 > $ root@hnn-001-01:~# ./run-ipython-notebook.sh
