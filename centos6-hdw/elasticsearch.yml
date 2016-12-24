@@ -1,9 +1,0 @@
-cluster.name: hdw
-
-path.conf: /usr/local/elasticsearch/config
-path.data: /data1/data
-path.logs: /data1/log
-path.plugins: /data1/plugins
-path.work: /data1/work
-
-discovery.zen.ping.timeout: 10s
