@@ -11,7 +11,7 @@ This is a reference model for Hadoop Data Warehouse.
 * Ubuntu 16.10
 * Oracle JDK 1.8.0_101
 * Apache Hadoop 2.7.3
-* Apache Spark 2.0.2
+* Apache Spark 2.1.0
 * Elasticsearch 5.0.0
 * Apache Hive 2.1.1
 * Python 2.7.12
