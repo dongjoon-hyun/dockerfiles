@@ -1,4 +1,4 @@
-FROM java:9
+FROM openjdk:9
 MAINTAINER Dongjoon Hyun <dongjoon@apache.org>
 
 RUN apt-get update && apt-get install -y git curl unzip openssh-server software-properties-common protobuf-compiler build-essential python-dev
