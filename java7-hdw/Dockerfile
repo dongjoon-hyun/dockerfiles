@@ -8,7 +8,8 @@ RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
-COPY config /root/.ssh/
+RUN echo 'StrictHostKeyChecking no' > /root/.ssh/config
+RUN chmod 400 /root/.ssh/config
 COPY start.sh /root/
 COPY sync-hosts.sh /root/
 
