@@ -15,14 +15,11 @@ COPY start.sh /root/
 COPY sync-hosts.sh /root/
 
 # java
-RUN \
-  curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u55-b13/jdk-7u55-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie' && \
-  rpm -i jdk-7u55-linux-x64.rpm && \
-  rm jdk-7u55-linux-x64.rpm
+RUN yum install -y java-1.8.0-openjdk-devel
 
-ENV JAVA_HOME /usr/java/default
+ENV JAVA_HOME /usr/lib/jvm/java
 ENV PATH $PATH:$JAVA_HOME/bin
-RUN echo 'JAVA_HOME="/usr/java/default"' >> /etc/environment
+RUN echo 'JAVA_HOME="/usr/lib/jvm/java"' >> /etc/environment
 
 # elasticsearch
 COPY elasticsearch.repo /etc/yum.repos.d/
@@ -52,7 +49,7 @@ RUN \
   echo 'HADOOP_CONF_DIR="/usr/local/hadoop/etc/hadoop"' >> /etc/environment && \
   echo 'YARN_CONF_DIR="/usr/local/hadoop/etc/hadoop"' >> /etc/environment
 
-RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/java/default\nexport HADOOP_PREFIX=/usr/local/hadoop\nexport HADOOP_HOME=/usr/local/hadoop\n:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
+RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/lib/jvm/java\nexport HADOOP_PREFIX=/usr/local/hadoop\nexport HADOOP_HOME=/usr/local/hadoop\n:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 RUN sed -i '/^export HADOOP_CONF_DIR/ s:.*:export HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop/:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 
 COPY core-site.xml $HADOOP_PREFIX/etc/hadoop/
